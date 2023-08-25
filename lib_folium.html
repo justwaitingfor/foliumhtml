@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Folium</title>
+<link rel="icon" href="https://raw.githubusercontent.com/awesome-panel/awesome-panel-assets/320297ccb92773da099f6b97d267cc0433b67c23/favicon/ap-1f77b4.ico" type=""><meta name="name" content="Folium">    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/alerts.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/card.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/dataframe.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/debugger.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/json.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/loading.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/markdown.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/css/widgets.css" type="text/css" />
+    <style>
+        
+    .bk.pn-loading.arc:before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=");
+      background-size: auto calc(min(50%, 400px));
+    }
+    
+    </style>
+    <style>
+        
+img.pnx-avatar {
+    height:100%;
+    width:100%;
+    border-radius:50%;
+    vertical-align: middle;
+}
+.pnx-resource img.pnx-avatar {
+    height: 2em;
+    width: 2em;
+    margin-left: 0.5em;
+}
+.pnx-resource svg.pnx-icon {
+    height: 1.5em;
+    margin-left: 0.5em;
+    vertical-align: middle;
+    fill: currentColor;
+}
+.pnx-resource svg.pnx-icon.pnx-icon-binder {
+    width: 5em;
+}
+.pnx-resource a {
+    text-decoration: none;
+}
+
+    </style>
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.holoviz.org/panel/0.14.4/dist/panel.min.js"></script><script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script><!-- Template CSS -->
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_root.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_bokeh.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_bokeh_slickgrid.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_panel.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_panel_dataframe.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_panel_widgets.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_panel_markdown.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_awesome.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastlisttemplate/fast_list_template.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastdefaulttheme/fast_root_default.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastlisttemplate/default.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+  :root {
+    --body-font: Open Sans, sans-serif;
+  }
+  body {
+    color: #00aa41;
+    background-color: #ffffff;
+    font-family: var(--body-font);
+  }
+  #header a {
+    color: currentColor;
+  }
+  #header-design-provider {
+    --neutral-foreground-rest: #ffffff;
+  }
+  #sidebar {
+    width: 330px;
+  }
+  #header {
+      box-shadow: 2px 2px 10px silver;
+  }
+  #sidebar {
+      box-shadow: 2px 2px 10px silver;
+  }
+</style>
+
+<!-- Template JS -->
+<script src="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/fastbasetemplate/fast_template.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js" type="module"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.4/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js" type="module"></script>
+
+<!-- Fast Script -->
+<script type="module">
+  import { parseColorHexRGB } from "https://cdn.holoviz.org/panel/0.14.4/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js";
+  import {
+    createColorPalette,
+    accentFillActiveBehavior,
+    accentFillHoverBehavior,
+    accentFillRestBehavior,
+    accentForegroundActiveBehavior,
+    accentForegroundCutRestBehavior,
+    accentForegroundFocusBehavior,
+    accentForegroundHoverBehavior,
+    accentForegroundRestBehavior,
+    neutralDividerRestBehavior,
+    neutralFillHoverBehavior,
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFillRestBehavior,
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralFocusInnerAccentBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundHoverBehavior,
+    neutralLayerFloatingBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior
+  } from "https://cdn.holoviz.org/panel/0.14.4/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js";
+
+  function standardize_color(str){
+    var ctx = document.createElement('canvas').getContext('2d');
+    ctx.fillStyle = str;
+    return ctx.fillStyle;
+  }
+
+  function setAccentColor(color, selector){
+      color = standardize_color(color);
+      const accent = color;
+      const palette = createColorPalette(parseColorHexRGB(accent));
+      const provider = document.querySelector(selector);
+      provider.accentBaseColor = accent;
+      provider.accentPalette = palette;
+  }
+  setAccentColor("#1f77b4", "#body-design-provider");
+  setAccentColor("#ffffff", "#header-design-provider");
+
+  function setNeutralColor(color, selector){
+      color = standardize_color(color);
+      const palette = createColorPalette(parseColorHexRGB(color));
+      const provider = document.querySelector(selector);
+
+      provider.neutralPalette = palette;
+  }
+  setNeutralColor("#ffffff", "#header-design-provider");
+  setNeutralColor("#000000", "#body-design-provider");
+
+  function setBackgroundColor(color, selector){
+    color = standardize_color(color);
+    const provider = document.querySelector(selector);
+    provider.backgroundColor=color;
+  }
+  setBackgroundColor("#1f77b4", "#header-design-provider");
+  setBackgroundColor("#ffffff", "#body-design-provider");
+
+  document.querySelector("#body-design-provider").cornerRadius=3;
+
+  function registerCSSCustomProperties(selector)  {
+    const provider = document.querySelector(selector);
+    provider.registerCSSCustomProperty(accentFillActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(accentFillHoverBehavior)
+    provider.registerCSSCustomProperty(accentFillRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(accentForegroundCutRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundFocusBehavior)
+    provider.registerCSSCustomProperty(accentForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(accentForegroundRestBehavior)
+    provider.registerCSSCustomProperty(neutralDividerRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthRestBehavior)
+    provider.registerCSSCustomProperty(neutralFocusBehavior)
+    provider.registerCSSCustomProperty(neutralFocusInnerAccentBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(neutralLayerFloatingBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineActiveBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineHoverBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineRestBehavior)
+  }
+  registerCSSCustomProperties("#header-design-provider")
+  registerCSSCustomProperties("#body-design-provider")
+
+  class FastDesignProvider {
+    setAccentColor(value, element){
+      setAccentColor(value, element);
+    }
+    setNeutralColor(value, element){
+      setNeutralColor(value, element);
+    }
+    setBackgroundColor(value, element){
+      setBackgroundColor(value, element)
+    }
+  }
+  window.fastDesignProvider = new FastDesignProvider()
+</script>
+  </head>
+  <body class="bk pn-loading arc">
+<fast-design-system-provider id="body-design-provider" use-defaults accent-foreground-cut-rest="#FFFFFF"
+background-color="#ffffff"accent-base-color="#1f77b4"  >
+  <div id="container">
+  <fast-design-system-provider id="header-design-provider"
+background-color="#1f77b4"  >
+  <nav id="header">
+    <span onclick="closeNav()" id="sidebar-button">
+      <div class="pn-bar"></div>
+      <div class="pn-bar"></div>
+      <div class="pn-bar"></div>
+	  </span>
+    <fast-tooltip anchor="sidebar-button" position="right">
+      Toggle the Sidebar
+    </fast-tooltip>
+    <div class="app-header">
+<a class="title" href="./" >&nbsp;Awesome Panel</a><span class="title">-</span><a class="title" href="" >Folium</a>    </div>
+    <div id="header-items">
+    <div class="bk-root" id="0dacea8b-eedc-4661-8794-7ece723a99eb" data-root-id="1008"></div>
+  </div>
+  <div class="pn-toggle-theme">
+    <fast-switch id="theme-switch" style="float: right;" onChange="toggleLightDarkTheme('default')" checked>
+      <span slot="checked-message">
+        <svg class="theme-toggle-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
+      </span>
+      <span slot="unchecked-message">
+        <svg class="theme-toggle-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/></svg>
+      </span>
+    </fast-switch>
+    <fast-tooltip anchor="theme-switch" position="bottom">
+      Toggle the Theme
+    </fast-tooltip>
+  </div>
+	<div class="pn-busy-container" id="busy-container">
+	  <div class="bk-root" id="8edd6d3e-17f7-4e6f-892e-57d482c14fac" data-root-id="1007"></div>
+	</div>
+  <fast-tooltip anchor="busy-container" position="left">
+    Busy Indicator
+  </fast-tooltip>
+
+  </nav>
+  </fast-design-system-provider>
+
+  <div class="row" id="content">
+    <div class="sidenav" id="sidebar">
+      <ul class="nav flex-column">
+      <fast-accordion id="menu">
+            <fast-accordion-item slot="item" expanded>
+                <h3 slot="heading" style="margin:0px">Main</h3>
+    <svg style="stroke: #1f77b4" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" slot="collapsed-icon">
+                <path d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M9 5.44446V12.5556" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+    
+    <svg style="stroke: #1f77b4" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" slot="expanded-icon">
+        <path d="M15.2222 1H2.77778C1.79594 1 1 1.79594 1 2.77778V15.2222C1 16.2041 1.79594 17 2.77778 17H15.2222C16.2041 17 17 16.2041 17 15.2222V2.77778C17 1.79594 16.2041 1 15.2222 1Z" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M5.44446 9H12.5556" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    
+                <ul>
+                  <li><a apperance="stealth" href="home">Home</a></li>
+          <li><a apperance="stealth" href="gallery">App Gallery</a></li>
+          <li><a apperance="stealth" href="awesome_list">Community Gallery</a></li>
+
+                </ul>
+            </fast-accordion-item>    
+        </fast-accordion>
+      </ul>
+    </div>
+
+    <div class="main" id="main"
+    style="margin-left: 360px;"
+    >
+      <div class="card-margin">
+<fast-card class="pn-wrapper">        <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+        </span>
+        <div class="bk-root" id="9cb53daf-1f12-473a-919d-41481cf644e8" data-root-id="1013"></div>
+</fast-card>      </div>
+      <div class="card-margin">
+<fast-card class="pn-wrapper">        <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+        </span>
+        <div class="bk-root" id="83c269bb-a7b0-49e9-8bbc-7c7ef45a0bf2" data-root-id="1014"></div>
+</fast-card>      </div>
+
+      <fast-dialog id="pn-Modal" hidden style="--dialog-width: 80%; --dialog-height: auto; --background-color: var(--neutral-layer-floating);">
+        <fast-button class="pn-modal-close" id="pn-closeModal">&times;</fast-button>
+	<div>
+	</div>
+      </fast-dialog>
+  </div>
+  </div>
+</div>
+</fast-design-system-provider>
+<script>
+  
+</script>
+<script>
+  function openNav() {
+    document.getElementById("sidebar").style.left = 0;
+    document.getElementById("main").style.marginLeft = "360px";
+    document.getElementById("sidebar-button").onclick = closeNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  function closeNav() {
+    document.getElementById("sidebar").style.left = "-360px";
+    document.getElementById("main").style.marginLeft = 0;
+    document.getElementById("sidebar-button").onclick = openNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  var modal = document.getElementById("pn-Modal");
+  var span = document.getElementById("pn-closeModal");
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<div class="bk-root" id="38a9cd3a-5a34-4322-9c1a-71068f42263e" data-root-id="1004"></div>
+<div class="bk-root" id="47fedfe1-29b0-461f-b747-c5135ed06dab" data-root-id="1006"></div>
+<div class="bk-root" id="dd865dbb-7528-4e7b-8954-2e7914c5fe78" data-root-id="1002"></div>
+
+  
+    <script type="text/javascript">
+      const pyodideWorker = new Worker("./lib_folium.js");
+      pyodideWorker.busy = false
+      pyodideWorker.queue = []
+      
+      function send_change(jsdoc, event) {
+        if (event.setter_id != null && event.setter_id == 'py') {
+          return
+        } else if (pyodideWorker.busy && event.model && event.attr) {
+          let events = []
+          for (const old_event of pyodideWorker.queue) {
+            if (!(old_event.model === event.model && old_event.attr === event.attr)) {
+              events.push(old_event)
+            }
+          }
+          events.push(event)
+          pyodideWorker.queue = events
+          return
+        }
+        const patch = jsdoc.create_json_patch_string([event])
+        pyodideWorker.busy = true
+        pyodideWorker.postMessage({type: 'patch', patch: patch})
+      }
+      
+      pyodideWorker.onmessage = async (event) => {
+        const msg = event.data
+      
+        const body = document.getElementsByTagName('body')[0]
+        const loading_msgs = document.getElementsByClassName('pn-loading-msg')
+        if (msg.type === 'idle') {
+          if (pyodideWorker.queue.length) {
+            const patch = pyodideWorker.jsdoc.create_json_patch_string(pyodideWorker.queue)
+            pyodideWorker.busy = true
+            pyodideWorker.queue = []
+            pyodideWorker.postMessage({type: 'patch', patch: patch})
+          } else {
+            pyodideWorker.busy = false
+          }
+        } else if (msg.type === 'status') {
+          let loading_msg
+          if (loading_msgs.length) {
+            loading_msg = loading_msgs[0]
+          } else if (body.classList.contains('pn-loading')) {
+            loading_msg = document.createElement('div')
+            loading_msg.classList.add('pn-loading-msg')
+            body.appendChild(loading_msg)
+          }
+          if (loading_msg != null) {
+            loading_msg.innerHTML = msg.msg
+          }
+        } else if (msg.type === 'render') {
+          const docs_json = JSON.parse(msg.docs_json)
+          const render_items = JSON.parse(msg.render_items)
+          const root_ids = JSON.parse(msg.root_ids)
+      
+          // Remap roots in message to element IDs
+          const root_els = document.getElementsByClassName('bk-root')
+          const data_roots = []
+          for (const el of root_els) {
+             el.innerHTML = ''
+             data_roots.push([parseInt(el.getAttribute('data-root-id')), el.id])
+          }
+          data_roots.sort((a, b) => a[0]<b[0] ? -1: 1)
+          const roots = {}
+          for (let i=0; i<data_roots.length; i++) {
+            roots[root_ids[i]] = data_roots[i][1]
+          }
+          render_items[0]['roots'] = roots
+          render_items[0]['root_ids'] = root_ids
+      
+          // Embed content
+          const [views] = await Bokeh.embed.embed_items(docs_json, render_items)
+      
+          // Remove loading spinner and message
+          body.classList.remove("bk", "pn-loading", "arc")
+          for (const loading_msg of loading_msgs) {
+            loading_msg.remove()
+          }
+      
+          // Setup bi-directional syncing
+          pyodideWorker.jsdoc = jsdoc = views[0].model.document
+          jsdoc.on_change(send_change.bind(null, jsdoc), false)
+          pyodideWorker.postMessage({'type': 'rendered'})
+          pyodideWorker.postMessage({'type': 'location', location: JSON.stringify(window.location)})
+        } else if (msg.type === 'patch') {
+          pyodideWorker.jsdoc.apply_json_patch(JSON.parse(msg.patch), msg.buffers, setter_id='py')
+        }
+      };
+    </script>
+    <script type="application/json" id="1015">
+      {"9594459e-a82b-4618-8e78-a2fc26393352":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00459","sizing_mode":"fixed","text":"&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;https://twitter.com/MarcSkovMadsen&amp;quot;&amp;gt;&amp;lt;img alt=&amp;quot;Follow on Twitter&amp;quot; src=&amp;quot;https://img.shields.io/twitter/follow/MarcSkovMadsen.svg?style=social&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;","width":230},"id":"1011","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1009"},{"id":"1010"},{"id":"1011"},{"id":"1012"}],"height":86,"margin":[0,0,0,0],"name":"1604063998160","sizing_mode":"stretch_width","tags":["header"]},"id":"1008","type":"Row"},{"attributes":{"name":"location","reload":false},"id":"1002","type":"panel.models.location.Location"},{"attributes":{"data":{"id":"1005"},"margin":[0,0,0,0],"name":"actions","scripts":{"close_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;none&amp;#x27;"],"open_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;block&amp;#x27;"]},"subscribed_events":["dom_event"]},"id":"1006","type":"panel.models.reactive_html.ReactiveHTML"},{"attributes":{"margin":[5,5,5,5],"name":"Spacer00456","sizing_mode":"stretch_width"},"id":"1009","type":"Spacer"},{"attributes":{"margin":[5,5,5,5],"name":"1604067544800","sizing_mode":"stretch_width","tags":["main"],"text":"&amp;lt;div class=&amp;quot;pnx-resource&amp;quot;&amp;gt;\n        &amp;lt;h1 class=&amp;quot;pnx-header&amp;quot;&amp;gt;Folium&amp;lt;/h1&amp;gt;\n        &amp;lt;p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;https://python-visualization.github.io/folium/&amp;quot;&amp;gt;Folium&amp;lt;/a&amp;gt; provides GeoViz using Python data wrangling and Leaflet.js&amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;Please note that Folium &amp;lt;strong&amp;gt;does not support two-way events&amp;lt;/strong&amp;gt; like click etc. in your data apps.&amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;The purpose of this app is to demonstrate that Panel works with the tools you know and love &amp;amp;#10084;&amp;amp;#65039;,\nincluding Folium.&amp;lt;/p&amp;gt;&amp;lt;/p&amp;gt;\n        &amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Authors:&amp;lt;/strong&amp;gt;&amp;lt;a href=&amp;quot;https://datamodelsanalytics.com&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;https://avatars0.githubusercontent.com/u/42288570&amp;quot; class=&amp;quot;pnx-avatar&amp;quot; alt=&amp;quot;Avatar&amp;quot; title=&amp;quot;Marc Skov Madsen&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Code:&amp;lt;/strong&amp;gt;&amp;lt;a title=&amp;quot;code&amp;quot; appearance=&amp;quot;hypertext&amp;quot; href=&amp;quot;https://github.com/MarcSkovMadsen/awesome-panel/tree/master/awesome_panel/apps/lib_folium.py&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;\n&amp;lt;svg class=&amp;quot;pnx-icon&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot;&amp;gt;\n    &amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z&amp;quot;/&amp;gt;\n&amp;lt;/svg&amp;gt;\n&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Resources:&amp;lt;/strong&amp;gt;&amp;lt;a title=&amp;quot;doc&amp;quot; appearance=&amp;quot;hypertext&amp;quot; href=&amp;quot;https://panel.holoviz.org/reference/panes/Folium.html&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;\n&amp;lt;svg class=&amp;quot;pnx-icon&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot;&amp;gt;\n    &amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.303.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.25.461 3.287.811V2.828c-.885-.25-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.258.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z&amp;quot;/&amp;gt;\n&amp;lt;/svg&amp;gt;\n&amp;lt;/a&amp;gt;&amp;lt;a title=&amp;quot;youtube&amp;quot; appearance=&amp;quot;hypertext&amp;quot; href=&amp;quot;https://www.youtube.com/results?search_query=folium&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;\n&amp;lt;svg class=&amp;quot;pnx-icon&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot; role=&amp;quot;img&amp;quot; viewBox=&amp;quot;0 0 576 512&amp;quot;&amp;gt;\n    &amp;lt;path d=&amp;quot;M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 25 288 25 288 25S117.22 25 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.251-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.308V175.185l142.739 81.205-142.739 81.201z&amp;quot;/&amp;gt;\n&amp;lt;/svg&amp;gt;\n&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Tags:&amp;lt;/strong&amp;gt; #folium, #spatial, #geoviz, #dataviz&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;"},"id":"1013","type":"panel.models.markup.HTML"},{"attributes":{"margin":[5,5,5,5],"min_height":700,"name":"1604057924416","sizing_mode":"stretch_both","tags":["main"],"text":"&amp;lt;div style=&amp;quot;width:100%;height:100%&amp;quot;&amp;gt;&amp;lt;div style=&amp;quot;position:relative;width:100%;height:100%;padding-bottom:0%;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color:#565656&amp;quot;&amp;gt;Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook&amp;lt;/span&amp;gt;&amp;lt;iframe srcdoc=&amp;quot;&amp;amp;lt;!DOCTYPE html&amp;amp;gt;\n&amp;amp;lt;html&amp;amp;gt;\n&amp;amp;lt;head&amp;amp;gt;\n    \n    &amp;amp;lt;meta http-equiv=&amp;amp;quot;content-type&amp;amp;quot; content=&amp;amp;quot;text/html; charset=UTF-8&amp;amp;quot; /&amp;amp;gt;\n    \n        &amp;amp;lt;script&amp;amp;gt;\n            L_NO_TOUCH = false;\n            L_DISABLE_3D = false;\n        &amp;amp;lt;/script&amp;amp;gt;\n    \n    &amp;amp;lt;style&amp;amp;gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&amp;amp;lt;/style&amp;amp;gt;\n    &amp;amp;lt;style&amp;amp;gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&amp;amp;lt;/style&amp;amp;gt;\n    &amp;amp;lt;script src=&amp;amp;quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&amp;amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;\n    &amp;amp;lt;script src=&amp;amp;quot;https://code.jquery.com/jquery-1.12.4.min.js&amp;amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;\n    &amp;amp;lt;script src=&amp;amp;quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&amp;amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;\n    &amp;amp;lt;script src=&amp;amp;quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&amp;amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&amp;amp;quot;/&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&amp;amp;quot;/&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&amp;amp;quot;/&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&amp;amp;quot;/&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&amp;amp;quot;/&amp;amp;gt;\n    &amp;amp;lt;link rel=&amp;amp;quot;stylesheet&amp;amp;quot; href=&amp;amp;quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&amp;amp;quot;/&amp;amp;gt;\n    \n            &amp;amp;lt;meta name=&amp;amp;quot;viewport&amp;amp;quot; content=&amp;amp;quot;width=device-width,\n                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;amp;quot; /&amp;amp;gt;\n            &amp;amp;lt;style&amp;amp;gt;\n                #map_3b5599836cdb2a6cf5d40f3bd82e20e1 {\n                    position: relative;\n                    width: 100.0%;\n                    height: 100.0%;\n                    left: 0.0%;\n                    top: 0.0%;\n                }\n                .leaflet-container { font-size: 1rem; }\n            &amp;amp;lt;/style&amp;amp;gt;\n        \n&amp;amp;lt;/head&amp;amp;gt;\n&amp;amp;lt;body&amp;amp;gt;\n    \n    \n            &amp;amp;lt;div class=&amp;amp;quot;folium-map&amp;amp;quot; id=&amp;amp;quot;map_3b5599836cdb2a6cf5d40f3bd82e20e1&amp;amp;quot; &amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;\n        \n&amp;amp;lt;/body&amp;amp;gt;\n&amp;amp;lt;script&amp;amp;gt;\n    \n    \n            var map_3b5599836cdb2a6cf5d40f3bd82e20e1 = L.map(\n                &amp;amp;quot;map_3b5599836cdb2a6cf5d40f3bd82e20e1&amp;amp;quot;,\n                {\n                    center: [45.372, -121.6972],\n                    crs: L.CRS.EPSG3857,\n                    zoom: 12,\n                    zoomControl: true,\n                    preferCanvas: false,\n                }\n            );\n\n            \n\n        \n    \n            var tile_layer_787557155aa696dbb679b2c0f2376185 = L.tileLayer(\n                &amp;amp;quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&amp;amp;quot;,\n                {&amp;amp;quot;attribution&amp;amp;quot;: &amp;amp;quot;Map tiles by \\u003ca target=\\&amp;amp;quot;_blank\\&amp;amp;quot; href=\\&amp;amp;quot;http://stamen.com\\&amp;amp;quot;\\u003eStamen Design\\u003c/a\\u003e, under \\u003ca target=\\&amp;amp;quot;_blank\\&amp;amp;quot; href=\\&amp;amp;quot;http://creativecommons.org/licenses/by/3.0\\&amp;amp;quot;\\u003eCC BY 3.0\\u003c/a\\u003e. Data by \\u0026copy; \\u003ca target=\\&amp;amp;quot;_blank\\&amp;amp;quot; href=\\&amp;amp;quot;http://openstreetmap.org\\&amp;amp;quot;\\u003eOpenStreetMap\\u003c/a\\u003e, under \\u003ca target=\\&amp;amp;quot;_blank\\&amp;amp;quot; href=\\&amp;amp;quot;http://creativecommons.org/licenses/by-sa/3.0\\&amp;amp;quot;\\u003eCC BY SA\\u003c/a\\u003e.&amp;amp;quot;, &amp;amp;quot;detectRetina&amp;amp;quot;: false, &amp;amp;quot;maxNativeZoom&amp;amp;quot;: 18, &amp;amp;quot;maxZoom&amp;amp;quot;: 18, &amp;amp;quot;minZoom&amp;amp;quot;: 0, &amp;amp;quot;noWrap&amp;amp;quot;: false, &amp;amp;quot;opacity&amp;amp;quot;: 1, &amp;amp;quot;subdomains&amp;amp;quot;: &amp;amp;quot;abc&amp;amp;quot;, &amp;amp;quot;tms&amp;amp;quot;: false}\n            ).addTo(map_3b5599836cdb2a6cf5d40f3bd82e20e1);\n        \n    \n            var marker_81e2c7f54bf30fe7612cf16b058dfe56 = L.marker(\n                [45.3311, -121.7113],\n                {}\n            ).addTo(map_3b5599836cdb2a6cf5d40f3bd82e20e1);\n        \n    \n            var icon_cc8a757f48a1ab14f28e1e4dac3aa7cf = L.AwesomeMarkers.icon(\n                {&amp;amp;quot;extraClasses&amp;amp;quot;: &amp;amp;quot;fa-rotate-0&amp;amp;quot;, &amp;amp;quot;icon&amp;amp;quot;: &amp;amp;quot;info-sign&amp;amp;quot;, &amp;amp;quot;iconColor&amp;amp;quot;: &amp;amp;quot;white&amp;amp;quot;, &amp;amp;quot;markerColor&amp;amp;quot;: &amp;amp;quot;green&amp;amp;quot;, &amp;amp;quot;prefix&amp;amp;quot;: &amp;amp;quot;glyphicon&amp;amp;quot;}\n            );\n            marker_81e2c7f54bf30fe7612cf16b058dfe56.setIcon(icon_cc8a757f48a1ab14f28e1e4dac3aa7cf);\n        \n    \n        var popup_315859815e33012cbc999d938b8db7cd = L.popup({&amp;amp;quot;maxWidth&amp;amp;quot;: &amp;amp;quot;100%&amp;amp;quot;});\n\n        \n            \n                var html_58dca0af69b9bdc8f29745056d196339 = $(`&amp;amp;lt;div id=&amp;amp;quot;html_58dca0af69b9bdc8f29745056d196339&amp;amp;quot; style=&amp;amp;quot;width: 100.0%; height: 100.0%;&amp;amp;quot;&amp;amp;gt;Timberline Lodge&amp;amp;lt;/div&amp;amp;gt;`)[0];\n                popup_315859815e33012cbc999d938b8db7cd.setContent(html_58dca0af69b9bdc8f29745056d196339);\n            \n        \n\n        marker_81e2c7f54bf30fe7612cf16b058dfe56.bindPopup(popup_315859815e33012cbc999d938b8db7cd)\n        ;\n\n        \n    \n    \n            var marker_ac06868cda4b1db4767ef0710ddc97f6 = L.marker(\n                [45.33, -121.6823],\n                {}\n            ).addTo(map_3b5599836cdb2a6cf5d40f3bd82e20e1);\n        \n    \n            var icon_96585acf5528a4120278ac1bcba21eee = L.AwesomeMarkers.icon(\n                {&amp;amp;quot;extraClasses&amp;amp;quot;: &amp;amp;quot;fa-rotate-0&amp;amp;quot;, &amp;amp;quot;icon&amp;amp;quot;: &amp;amp;quot;info-sign&amp;amp;quot;, &amp;amp;quot;iconColor&amp;amp;quot;: &amp;amp;quot;white&amp;amp;quot;, &amp;amp;quot;markerColor&amp;amp;quot;: &amp;amp;quot;red&amp;amp;quot;, &amp;amp;quot;prefix&amp;amp;quot;: &amp;amp;quot;glyphicon&amp;amp;quot;}\n            );\n            marker_ac06868cda4b1db4767ef0710ddc97f6.setIcon(icon_96585acf5528a4120278ac1bcba21eee);\n        \n    \n        var popup_b0151bb547d4496a2eba5783c30dffcf = L.popup({&amp;amp;quot;maxWidth&amp;amp;quot;: &amp;amp;quot;100%&amp;amp;quot;});\n\n        \n            \n                var html_1000cf994195eb9af2a836cff1611a06 = $(`&amp;amp;lt;div id=&amp;amp;quot;html_1000cf994195eb9af2a836cff1611a06&amp;amp;quot; style=&amp;amp;quot;width: 100.0%; height: 100.0%;&amp;amp;quot;&amp;amp;gt;Some Other Location&amp;amp;lt;/div&amp;amp;gt;`)[0];\n                popup_b0151bb547d4496a2eba5783c30dffcf.setContent(html_1000cf994195eb9af2a836cff1611a06);\n            \n        \n\n        marker_ac06868cda4b1db4767ef0710ddc97f6.bindPopup(popup_b0151bb547d4496a2eba5783c30dffcf)\n        ;\n\n        \n    \n&amp;amp;lt;/script&amp;amp;gt;\n&amp;amp;lt;/html&amp;amp;gt;&amp;quot; style=&amp;quot;position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;&amp;quot; allowfullscreen webkitallowfullscreen mozallowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;"},"id":"1014","type":"panel.models.markup.HTML"},{"attributes":{"name":"TemplateActions00437"},"id":"1005","type":"TemplateActions1"},{"attributes":{"margin":[5,5,5,5],"name":"VSpacer00461","sizing_mode":"stretch_height","width":4},"id":"1012","type":"Spacer"},{"attributes":{"height":0,"margin":[0,0,0,0],"name":"js_area","sizing_mode":"fixed","width":0},"id":"1004","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00457","sizing_mode":"fixed","text":"&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;https://GitHub.com/MarcSkovMadsen/awesome-panel/stargazers/&amp;quot;&amp;gt;&amp;lt;img alt=&amp;quot;GitHub stars&amp;quot; src=&amp;quot;https://img.shields.io/github/stars/MarcSkovMadsen/awesome-panel.svg?style=social&amp;amp;amp;label=Star&amp;amp;amp;maxAge=2592000&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;","width":75},"id":"1010","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["loader","light"],"height":20,"margin":[5,10,5,10],"name":"busy_indicator","sizing_mode":"fixed","width":20},"id":"1007","type":"panel.models.markup.HTML"}],"root_ids":["1002","1004","1006","1007","1008","1013","1014"]},"title":"Folium","version":"2.4.3"}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('1015').textContent;
+              const render_items = [{"docid":"9594459e-a82b-4618-8e78-a2fc26393352","root_ids":["1002","1004","1006","1007","1008","1013","1014"],"roots":{"1002":"dd865dbb-7528-4e7b-8954-2e7914c5fe78","1004":"38a9cd3a-5a34-4322-9c1a-71068f42263e","1006":"47fedfe1-29b0-461f-b747-c5135ed06dab","1007":"8edd6d3e-17f7-4e6f-892e-57d482c14fac","1008":"0dacea8b-eedc-4661-8794-7ece723a99eb","1013":"9cb53daf-1f12-473a-919d-41481cf644e8","1014":"83c269bb-a7b0-49e9-8bbc-7c7ef45a0bf2"}}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>
